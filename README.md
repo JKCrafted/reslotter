@@ -5,7 +5,7 @@
 
 A GUI tool for reslotting mods. Requires python 3.9+. This will reslot anything under the folders `fighter`,`sound`,`ui`, and `effects` (if applicable)
 
-You'll need to download a 
+You'll need to download a "Hashes_all.txt" file from [here](https://github.com/ultimate-research/archive-hashes/blob/master/Hashes_all) and place it here.
 
 Courtesy of CoolSonicKirby and WuBoy, this will also generate the proper config for you to use! Once the reslotter is finished, it should be ready to be added directly to your switch. If you need more slots, you can manually type in the dropdown box the slot you need (ie `+c21`), or you can edit the `reslotterGUI.py` script at line 18. It should be a variable called `root.maxSlots`, which is defaulted at 11.
 
