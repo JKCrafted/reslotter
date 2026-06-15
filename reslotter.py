@@ -360,9 +360,14 @@ def RecursiveRewrite(info,current_alt,target_alt):
     print(info.replace(current_alt,target_alt))
     return info.replace(current_alt,target_alt)
 
-def main(mod_directory, hashes_file, fighter_name, current_alt, target_alt, share_slot, out_dir):
+def main(mod_directory, hashes_file, fighter_name, current_alt, target_alt, share_slot, out_dir, config_exists=False):
     # get all of the files the mod modifies
     # fighter_files is already loaded in init()
+
+    try:
+        fighter_files
+    except NameError:
+        init(hashes_file, mod_directory, config_exists)
     
     # make the out directory if it doesn't exist
     if (not os.path.exists(out_dir)) and out_dir!="":
@@ -451,6 +456,10 @@ def init(hashes_file, mod_directory, newConfig):
 
 if __name__ == "__main__":
     try:
-        main(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6],sys.argv[7])
+        if len(sys.argv) > 8 and (sys.argv[8].lower() == "true"):
+            use_config = True
+        else: use_config = False
+                
+        main(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7], use_config)
     except IndexError:
         usage()
