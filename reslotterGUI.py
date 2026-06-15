@@ -801,10 +801,6 @@ def SubCall(fighters, onlyConfig, sources, targets, shares, exclude, clone):
 			if newName != "":
 				RenameUI(root.targetDir,fighter,newName)
 
-		# Guardar el config ordenado correctamente
-		newConfigLocation = root.targetDir + '/config.json'
-		with open(newConfigLocation, 'w+', encoding='utf-8') as f:
-			json.dump(ordered_config if ordered_config else reslotter.resulting_config, f, ensure_ascii=False, indent=4)
 
 		UpdateHeader("¡Completed!", "green")
 		messagebox.showinfo(root.title(),"¡Process completed successfully!")

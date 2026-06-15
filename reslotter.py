@@ -392,6 +392,11 @@ def main(mod_directory, hashes_file, fighter_name, current_alt, target_alt, shar
         
         # Replace the original dictionary with the ordered one
         resulting_config["new-dir-files"] = ordered_new_dir_files
+    
+    
+    newConfigLocation = out_dir + '/config.json'
+    with open(newConfigLocation, 'w+', encoding='utf-8') as f:
+        json.dump(resulting_config, f, ensure_ascii=False, indent=4)
 
 def init(hashes_file, mod_directory, newConfig):
     # load dir_info_with_files_trimmed.json for dir addition config gen
