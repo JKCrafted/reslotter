@@ -372,6 +372,7 @@ def main(mod_directory, hashes_file, fighter_name, current_alt, target_alt, shar
     # make the out directory if it doesn't exist
     if (not os.path.exists(out_dir)) and out_dir!="":
         os.mkdir(out_dir)
+        
 
     reslotted_files, new_fighter_files = reslot_fighter_files(mod_directory, fighter_files, current_alt, target_alt, share_slot, out_dir, fighter_name)
     
@@ -394,7 +395,7 @@ def main(mod_directory, hashes_file, fighter_name, current_alt, target_alt, shar
         resulting_config["new-dir-files"] = ordered_new_dir_files
     
     
-    newConfigLocation = out_dir + '/config.json'
+    newConfigLocation = (out_dir if out_dir != "" else mod_directory) + '/config.json'
     with open(newConfigLocation, 'w+', encoding='utf-8') as f:
         json.dump(resulting_config, f, ensure_ascii=False, indent=4)
 
